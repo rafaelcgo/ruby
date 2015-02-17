@@ -1,4 +1,4 @@
-# -*- encoding : utf-8 -*- 
+# -*- encoding : utf-8 -*-
 require_relative "boot"
 
 payment = PagSeguro::PaymentRequest.new
@@ -15,9 +15,9 @@ payment.items << {
 
 payment.reference = "REF1234"
 payment.sender = {
-  name: "Nando Vieira",
-  email: "fnando.vieira@gmail.com",
-  cpf: "21639716866",
+  name: "Joao Comprador",
+  email: "joao@comprador.com.br",
+  cpf: "75073461100",
   phone: {
     area_code: 11,
     number: "12345678"
@@ -28,8 +28,8 @@ payment.shipping = {
   type_name: "sedex",
   address: {
     street: "R. Vergueiro",
-    number: 1421,
-    complement: "Sala 213",
+    number: 1,
+    complement: "Sala 1",
     city: "São Paulo",
     state: "SP",
     district: "Vila Mariana"

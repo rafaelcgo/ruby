@@ -5,11 +5,10 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = ">= 1.9.3"
   spec.name                  = "pagseguro-oficial"
   spec.version               = PagSeguro::VERSION
-  spec.authors               = ["Nando Vieira"]
-  spec.email                 = ["fnando.vieira@gmail.com"]
+  spec.authors               = ["PagSeguro"]
   spec.description           = "Biblioteca oficial de integração PagSeguro em Ruby"
   spec.summary               = spec.description
-  spec.homepage              = "http://www.pagseguro.com.br"
+  spec.homepage              = "http://forum.pagseguro.uol.com.br"
   spec.license               = "ASL"
 
   spec.files                 = `git ls-files`.split($/)
