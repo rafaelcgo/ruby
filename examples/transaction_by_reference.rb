@@ -1,16 +1,15 @@
-require_relative "boot"
-require "active_support/all"
+require_relative 'boot'
 
-report = PagSeguro::Transaction.find_by_date(starts_at: 29.days.ago, per_page: 1)
+transaction = PagSeguro::Transaction.find_by_reference("REF1234")
 
-while report.next_page?
-  report.next_page!
-  puts "== Page #{report.page}"
-  abort "=> Errors: #{report.errors.join("\n")}" unless report.valid?
-  puts "Report created on #{report.created_at}"
+while transaction.next_page?
+  transaction.next_page!
+  puts "== Page #{transaction.page}"
+  abort "=> Errors: #{transaction.errors.join("\n")}" unless transaction.valid?
+  puts "Report created on #{transaction.created_at}"
   puts
 
-  report.transactions.each do |transaction|
+  transaction.transactions.each do |transaction|
     puts "=> Transaction"
     puts "   created_at: #{transaction.created_at}"
     puts "   code: #{transaction.code}"
@@ -22,3 +21,4 @@ while report.next_page?
     puts
   end
 end
+

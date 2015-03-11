@@ -76,7 +76,7 @@ module PagSeguro
     end
 
     # Search transactions within a date range.
-    # Return a PagSeguro::Report instance.
+    # Return a PagSeguro::SearchByDate instance
     #
     # Options:
     #
@@ -91,12 +91,23 @@ module PagSeguro
         ends_at: Time.now,
         per_page: 50
       }.merge(options)
+      SearchByDate.new("transactions", options, page)
+    end
 
-      Report.new(Transaction, "transactions", options, page)
+    # Search a transaction by its reference code
+    # Return a PagSeguro::SearchByReference instance
+    #
+    # Options:
+    #
+    # # +reference+: the transaction reference code
+    #
+    def self.find_by_reference(reference)
+      options = { reference: reference }
+      SearchByReference.new("transactions", options)
     end
 
     # Get abandoned transactions.
-    # Return a PagSeguro::Report instance.
+    # Return a PagSeguro::SearchByDate instance
     #
     # Options:
     #
@@ -112,7 +123,7 @@ module PagSeguro
         per_page: 50
       }.merge(options)
 
-      Report.new(Transaction, "transactions/abandoned", options, page)
+      SearchByDate.new("transactions/abandoned", options, page)
     end
 
     # Serialize the HTTP response into data.
